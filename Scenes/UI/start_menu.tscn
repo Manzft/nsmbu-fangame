@@ -2763,19 +2763,6 @@ scale = Vector2(-1.5, 1.5)
 texture = ExtResource("2_kj866")
 centered = false
 
-[node name="Background3" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(5760, -540)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_kj866")
-centered = false
-
-[node name="Background4" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(14402, -539)
-rotation = -3.14159
-scale = Vector2(1.5, -1.5)
-texture = ExtResource("2_kj866")
-centered = false
-
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(960, 0)
 
