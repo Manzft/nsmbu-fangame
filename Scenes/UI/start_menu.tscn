@@ -3381,7 +3381,7 @@ position = Vector2(20, -166)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_5borq")
 animation = &"idle"
-frame_progress = 0.906837
+frame_progress = 0.269938
 
 [node name="Guide" type="TextureRect" parent="."]
 visible = false
