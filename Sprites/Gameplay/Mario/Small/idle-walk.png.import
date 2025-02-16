@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1dnoi0u83wta"
-path="res://.godot/imported/tile000.png-a7d4bd6a3d6bd145a106abbffba9a023.ctex"
+uid="uid://kg7u68o3k0hp"
+path="res://.godot/imported/idle-walk.png-3c90d940af20666ff127458ef5fb7d2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Gameplay/Mario/Small/Walk/tile000.png"
-dest_files=["res://.godot/imported/tile000.png-a7d4bd6a3d6bd145a106abbffba9a023.ctex"]
+source_file="res://Sprites/Gameplay/Mario/Small/idle-walk.png"
+dest_files=["res://.godot/imported/idle-walk.png-3c90d940af20666ff127458ef5fb7d2e.ctex"]
 
 [params]
 

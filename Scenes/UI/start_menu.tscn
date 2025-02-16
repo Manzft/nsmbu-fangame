@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=4 uid="uid://glteyvs4rjs6"]
+[gd_scene load_steps=194 format=4 uid="uid://glteyvs4rjs6"]
 
 [ext_resource type="Texture2D" uid="uid://odaywx01maor" path="res://Sprites/Guides/start_menu_guide.png" id="1_grs5x"]
 [ext_resource type="Texture2D" uid="uid://cgt2n7edjmbpg" path="res://Sprites/UI/StartMenu/lplusr.png" id="1_ppynu"]
@@ -136,46 +136,12 @@
 [ext_resource type="Texture2D" uid="uid://7rdu08a1o2k7" path="res://Sprites/Gameplay/Mario/Small/Idle/125.png" id="133_m2chp"]
 [ext_resource type="Texture2D" uid="uid://5vw5b44jl7hj" path="res://Sprites/Gameplay/Mario/Small/Idle/126.png" id="134_fgg8v"]
 [ext_resource type="Texture2D" uid="uid://cxijnun7ijwhk" path="res://Sprites/Gameplay/Mario/Small/Idle/127.png" id="135_762ya"]
+[ext_resource type="Texture2D" uid="uid://kg7u68o3k0hp" path="res://Sprites/Gameplay/Mario/Small/idle-walk.png" id="135_v7bvi"]
 [ext_resource type="Texture2D" uid="uid://c7oyx6up5p3mh" path="res://Sprites/Gameplay/Mario/Small/Idle/128.png" id="136_b55yi"]
+[ext_resource type="Texture2D" uid="uid://5t3b5cliysvw" path="res://Sprites/Gameplay/Mario/Small/walk.png" id="136_r7k5c"]
 [ext_resource type="Texture2D" uid="uid://brhi4frt6vjv" path="res://Sprites/Gameplay/Mario/Small/Idle/129.png" id="137_krdmx"]
 [ext_resource type="Texture2D" uid="uid://ceayatlp5lmmk" path="res://Sprites/Gameplay/Mario/Small/Idle/130.png" id="138_wry52"]
 [ext_resource type="Texture2D" uid="uid://bigieatpt6bqp" path="res://Sprites/Gameplay/Mario/Small/Idle/131.png" id="139_sla6h"]
-[ext_resource type="Texture2D" uid="uid://1dnoi0u83wta" path="res://Sprites/Gameplay/Mario/Small/Walk/tile000.png" id="140_lnknn"]
-[ext_resource type="Texture2D" uid="uid://cefexfud5g67f" path="res://Sprites/Gameplay/Mario/Small/Walk/tile001.png" id="141_cf5xe"]
-[ext_resource type="Texture2D" uid="uid://bicbnjf83d325" path="res://Sprites/Gameplay/Mario/Small/Walk/tile002.png" id="142_6ivh8"]
-[ext_resource type="Texture2D" uid="uid://herbvbn71v68" path="res://Sprites/Gameplay/Mario/Small/Walk/tile003.png" id="143_i1bfs"]
-[ext_resource type="Texture2D" uid="uid://b0qexhycr02mc" path="res://Sprites/Gameplay/Mario/Small/Walk/tile004.png" id="144_nka03"]
-[ext_resource type="Texture2D" uid="uid://b1fex6n8d4y84" path="res://Sprites/Gameplay/Mario/Small/Walk/tile005.png" id="145_5sc4b"]
-[ext_resource type="Texture2D" uid="uid://capk15fj8f2uq" path="res://Sprites/Gameplay/Mario/Small/Walk/tile006.png" id="146_3sj32"]
-[ext_resource type="Texture2D" uid="uid://cbu008vh5gus" path="res://Sprites/Gameplay/Mario/Small/Walk/tile007.png" id="147_lg2jl"]
-[ext_resource type="Texture2D" uid="uid://5vr61pmbuhp" path="res://Sprites/Gameplay/Mario/Small/Walk/tile008.png" id="148_i6vhr"]
-[ext_resource type="Texture2D" uid="uid://dkrnuyc1w15gj" path="res://Sprites/Gameplay/Mario/Small/Walk/tile009.png" id="149_jeejn"]
-[ext_resource type="Texture2D" uid="uid://c2rk7t6l5f2r4" path="res://Sprites/Gameplay/Mario/Small/Walk/tile010.png" id="150_bwusc"]
-[ext_resource type="Texture2D" uid="uid://8bt8p0ohxb3" path="res://Sprites/Gameplay/Mario/Small/Walk/tile011.png" id="151_2incl"]
-[ext_resource type="Texture2D" uid="uid://donykhwjfmihl" path="res://Sprites/Gameplay/Mario/Small/Walk/tile012.png" id="152_y4ij6"]
-[ext_resource type="Texture2D" uid="uid://6o4uypvsul34" path="res://Sprites/Gameplay/Mario/Small/Walk/tile013.png" id="153_detvs"]
-[ext_resource type="Texture2D" uid="uid://dhdv0ixxjp87k" path="res://Sprites/Gameplay/Mario/Small/Walk/tile014.png" id="154_ik3hc"]
-[ext_resource type="Texture2D" uid="uid://basvm67j1vciw" path="res://Sprites/Gameplay/Mario/Small/Walk/tile015.png" id="155_v6e8u"]
-[ext_resource type="Texture2D" uid="uid://ceurteu4ax40n" path="res://Sprites/Gameplay/Mario/Small/Walk/tile016.png" id="156_de3sk"]
-[ext_resource type="Texture2D" uid="uid://dglcdt3f1lvvp" path="res://Sprites/Gameplay/Mario/Small/Walk/tile017.png" id="157_y2pyb"]
-[ext_resource type="Texture2D" uid="uid://dj71xq8wikln4" path="res://Sprites/Gameplay/Mario/Small/Walk/tile018.png" id="158_i15e8"]
-[ext_resource type="Texture2D" uid="uid://citm86dyhsfpm" path="res://Sprites/Gameplay/Mario/Small/Walk/tile019.png" id="159_dxtqt"]
-[ext_resource type="Texture2D" uid="uid://di4edeb5ua8l0" path="res://Sprites/Gameplay/Mario/Small/Walk/tile020.png" id="160_c4ok4"]
-[ext_resource type="Texture2D" uid="uid://r8odnimif0dp" path="res://Sprites/Gameplay/Mario/Small/Walk/tile021.png" id="161_t60rq"]
-[ext_resource type="Texture2D" uid="uid://bux0agt3p5ajp" path="res://Sprites/Gameplay/Mario/Small/Walk/tile022.png" id="162_bk4jh"]
-[ext_resource type="Texture2D" uid="uid://c4fheuslmpd7c" path="res://Sprites/Gameplay/Mario/Small/Walk/tile023.png" id="163_qvfoi"]
-[ext_resource type="Texture2D" uid="uid://0xcoc6hxwhdh" path="res://Sprites/Gameplay/Mario/Small/Walk/tile024.png" id="164_2xpm7"]
-[ext_resource type="Texture2D" uid="uid://b8vhqvvktfnja" path="res://Sprites/Gameplay/Mario/Small/Walk/tile025.png" id="165_s7imy"]
-[ext_resource type="Texture2D" uid="uid://cg2k5qdia7iww" path="res://Sprites/Gameplay/Mario/Small/Walk/tile026.png" id="166_rphg3"]
-[ext_resource type="Texture2D" uid="uid://bg5mp6ve1662n" path="res://Sprites/Gameplay/Mario/Small/Walk/tile027.png" id="167_lh7tj"]
-[ext_resource type="Texture2D" uid="uid://dlf7867hh5llj" path="res://Sprites/Gameplay/Mario/Small/Walk/tile028.png" id="168_b6a2s"]
-[ext_resource type="Texture2D" uid="uid://d0d3cn7l6lawf" path="res://Sprites/Gameplay/Mario/Small/Walk/tile029.png" id="169_h66hj"]
-[ext_resource type="Texture2D" uid="uid://bkhk7rvk448de" path="res://Sprites/Gameplay/Mario/Small/Walk/tile030.png" id="170_a88uq"]
-[ext_resource type="Texture2D" uid="uid://bqpw61jglx6ia" path="res://Sprites/Gameplay/Mario/Small/Walk/tile031.png" id="171_jsehe"]
-[ext_resource type="Texture2D" uid="uid://bwtbcuv81t3jw" path="res://Sprites/Gameplay/Mario/Small/Walk/tile032.png" id="172_oy1yc"]
-[ext_resource type="Texture2D" uid="uid://bsfriqh610noy" path="res://Sprites/Gameplay/Mario/Small/Walk/tile033.png" id="173_ogdab"]
-[ext_resource type="Texture2D" uid="uid://bqwepsrcb6vfs" path="res://Sprites/Gameplay/Mario/Small/Walk/tile034.png" id="174_nrvm7"]
-[ext_resource type="Texture2D" uid="uid://dk5auge8k8o5x" path="res://Sprites/Gameplay/Mario/Small/Walk/tile035.png" id="175_ul4i2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7cmww"]
 texture = ExtResource("8_mum5i")
@@ -1933,6 +1899,174 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_7cmww")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m23vp"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(95, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfkkv"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(190, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyfv0"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(285, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_283up"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(380, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlta6"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(475, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7n2d"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(570, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf2pw"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(665, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgmv2"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(760, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w2ol"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(855, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0pkl"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(950, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbj4k"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(1045, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jwgc"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(1140, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w6jw"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(1235, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xelc"]
+atlas = ExtResource("135_v7bvi")
+region = Rect2(0, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35oyy"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(0, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hl0e"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(92, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uver"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(184, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odxfh"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(276, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grhos"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(368, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx03b"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(460, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6x3a"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(552, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tytk"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(644, 0, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vigvd"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(0, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2kl8"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(92, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eid7v"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(184, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h3wk"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(276, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddbmb"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(368, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcmcw"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(460, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12myr"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(552, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2c2v"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(644, 111, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye0h6"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(0, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6viym"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(92, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0l0l"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(184, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j72gx"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(276, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umhfu"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(368, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj6ji"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(460, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88pp4"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(552, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8w56"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(644, 222, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14if"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(0, 333, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqc11"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(92, 333, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7osxx"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(184, 333, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0w7j"]
+atlas = ExtResource("136_r7k5c")
+region = Rect2(276, 333, 92, 111)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5borq"]
 animations = [{
 "frames": [{
@@ -2335,116 +2469,139 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("140_lnknn")
+"texture": SubResource("AtlasTexture_m23vp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("141_cf5xe")
+"texture": SubResource("AtlasTexture_hfkkv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("142_6ivh8")
+"texture": SubResource("AtlasTexture_oyfv0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("143_i1bfs")
+"texture": SubResource("AtlasTexture_283up")
 }, {
 "duration": 1.0,
-"texture": ExtResource("144_nka03")
+"texture": SubResource("AtlasTexture_tlta6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("145_5sc4b")
+"texture": SubResource("AtlasTexture_k7n2d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("146_3sj32")
+"texture": SubResource("AtlasTexture_tf2pw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("147_lg2jl")
+"texture": SubResource("AtlasTexture_qgmv2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("148_i6vhr")
+"texture": SubResource("AtlasTexture_1w2ol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("149_jeejn")
+"texture": SubResource("AtlasTexture_k0pkl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("150_bwusc")
+"texture": SubResource("AtlasTexture_tbj4k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("151_2incl")
+"texture": SubResource("AtlasTexture_8jwgc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("152_y4ij6")
+"texture": SubResource("AtlasTexture_3w6jw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("153_detvs")
+"texture": SubResource("AtlasTexture_4xelc")
+}],
+"loop": false,
+"name": &"idle-walk",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35oyy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("154_ik3hc")
+"texture": SubResource("AtlasTexture_5hl0e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("155_v6e8u")
+"texture": SubResource("AtlasTexture_2uver")
 }, {
 "duration": 1.0,
-"texture": ExtResource("156_de3sk")
+"texture": SubResource("AtlasTexture_odxfh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("157_y2pyb")
+"texture": SubResource("AtlasTexture_grhos")
 }, {
 "duration": 1.0,
-"texture": ExtResource("158_i15e8")
+"texture": SubResource("AtlasTexture_qx03b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("159_dxtqt")
+"texture": SubResource("AtlasTexture_f6x3a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("160_c4ok4")
+"texture": SubResource("AtlasTexture_6tytk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("161_t60rq")
+"texture": SubResource("AtlasTexture_vigvd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("162_bk4jh")
+"texture": SubResource("AtlasTexture_s2kl8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("163_qvfoi")
+"texture": SubResource("AtlasTexture_eid7v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("164_2xpm7")
+"texture": SubResource("AtlasTexture_8h3wk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("165_s7imy")
+"texture": SubResource("AtlasTexture_ddbmb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("166_rphg3")
+"texture": SubResource("AtlasTexture_fcmcw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("167_lh7tj")
+"texture": SubResource("AtlasTexture_12myr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("168_b6a2s")
+"texture": SubResource("AtlasTexture_q2c2v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("169_h66hj")
+"texture": SubResource("AtlasTexture_ye0h6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("170_a88uq")
+"texture": SubResource("AtlasTexture_6viym")
 }, {
 "duration": 1.0,
-"texture": ExtResource("171_jsehe")
+"texture": SubResource("AtlasTexture_q0l0l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("172_oy1yc")
+"texture": SubResource("AtlasTexture_j72gx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("173_ogdab")
+"texture": SubResource("AtlasTexture_umhfu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("174_nrvm7")
+"texture": SubResource("AtlasTexture_vj6ji")
 }, {
 "duration": 1.0,
-"texture": ExtResource("175_ul4i2")
+"texture": SubResource("AtlasTexture_88pp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8w56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w14if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqc11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7osxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0w7j")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 80.0
+"speed": 60.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u0hq6"]
@@ -2798,10 +2955,10 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Mario" type="AnimatedSprite2D" parent="MarioContainer"]
-position = Vector2(20, -167)
+position = Vector2(20, -163)
+scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_5borq")
 animation = &"idle"
-frame_progress = 0.393873
 
 [node name="Guide" type="TextureRect" parent="."]
 visible = false
@@ -2928,5 +3085,6 @@ libraries = {
 one_shot = true
 autostart = true
 
+[connection signal="animation_finished" from="MarioContainer/Mario" to="." method="_on_mario_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StartMusicTimer" to="." method="_on_start_music_timer_timeout"]

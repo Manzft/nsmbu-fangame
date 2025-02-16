@@ -15,4 +15,8 @@ func _on_start_music_timer_timeout() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "start"):
 		$AnimationPlayer.play("idle");
+		$MarioContainer/Mario.play("idle-walk");
+
+func _on_mario_animation_finished() -> void:
+	if ($MarioContainer/Mario.animation == "idle-walk"):
 		$MarioContainer/Mario.play("walk");
