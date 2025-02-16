@@ -7,7 +7,8 @@ func _ready():
 	$MarioContainer/Mario.play("idle");
 	
 func _process(delta: float) -> void:
-	$ParallaxBackground.autoscroll.x = $Parallax2D.autoscroll.x*0.8;
+	return
+	#$ParallaxBackground.autoscroll.x = $Parallax2D.autoscroll.x*0.8;
 
 func _on_start_music_timer_timeout() -> void:
 	$TitleScreenTheme.play();
