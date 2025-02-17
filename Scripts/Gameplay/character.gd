@@ -609,6 +609,7 @@ func mainMovementController():
 				current_sprite.flip_h = false;
 		velocity.x = min(velocity.x + acc, max_speed);
 		stoppedWalk = false;
+		arriving = false;
 	elif (inpchckl && sneakchck && !course_clear):
 		var acc = acceleration * 2.5;
 		if (is_on_floor() && !attacking):
@@ -648,6 +649,7 @@ func mainMovementController():
 				current_sprite.flip_h = true;
 		velocity.x = max(velocity.x - acc, -max_speed);
 		stoppedWalk = false;
+		arriving = false;
 	else:
 		friction = true;
 		if (is_on_floor() && !attacking && !arriving):
@@ -659,10 +661,12 @@ func mainMovementController():
 						current_sprite.play(currentPowerup+"_walk");
 				else:
 					velocity.x = 0;
-					if (!stoppedWalk && current_sprite.animation == currentPowerup+"_walk"):
-						stoppedWalk = true;
-						current_sprite.play(currentPowerup+"_walk_idle");
-						current_sprite.position.y = 4;
+					if (!stoppedWalk):
+						if (current_sprite.animation == currentPowerup+"_walk" ||
+						current_sprite.animation == currentPowerup+"_idle_walk"):
+							stoppedWalk = true;
+							current_sprite.play(currentPowerup+"_walk_idle");
+							current_sprite.position.y = 4;
 					
 					if (!stoppedWalk):
 						if (carrying):
