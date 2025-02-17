@@ -1,4 +1,4 @@
-[gd_scene load_steps=249 format=3 uid="uid://dhyetjsw1hngl"]
+[gd_scene load_steps=263 format=3 uid="uid://dhyetjsw1hngl"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/character.gd" id="1_cqasu"]
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="2_0r622"]
@@ -616,10 +616,6 @@ region = Rect2(1260, 756, 84, 108)
 atlas = ExtResource("2_0r622")
 region = Rect2(1344, 756, 84, 108)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apvlh"]
-atlas = ExtResource("37_iekpb")
-region = Rect2(0, 0, 95, 115)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vu17"]
 atlas = ExtResource("37_iekpb")
 region = Rect2(95, 0, 95, 115)
@@ -644,10 +640,6 @@ region = Rect2(475, 0, 95, 115)
 atlas = ExtResource("37_iekpb")
 region = Rect2(570, 0, 95, 115)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ot4n"]
-atlas = ExtResource("37_iekpb")
-region = Rect2(665, 0, 95, 115)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_45sbi"]
 atlas = ExtResource("37_iekpb")
 region = Rect2(760, 0, 95, 115)
@@ -671,6 +663,14 @@ region = Rect2(1140, 0, 95, 115)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nctov"]
 atlas = ExtResource("37_iekpb")
 region = Rect2(1235, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apvlh"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(0, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ot4n"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(665, 0, 95, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qa8xj"]
 atlas = ExtResource("61_ib1sj")
@@ -783,6 +783,62 @@ region = Rect2(184, 333, 92, 111)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rfav"]
 atlas = ExtResource("61_ib1sj")
 region = Rect2(276, 333, 92, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1irhl"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(0, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yehi5"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(1235, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joanu"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(1140, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq745"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(1045, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohub4"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(950, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrwfq"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(855, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dquuy"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(760, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpmwq"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(665, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uysop"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(570, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbbfy"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(475, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inwpj"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(380, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52f3k"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(285, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqxc0"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(190, 0, 95, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uokj3"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(95, 0, 95, 115)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yea5x"]
 animations = [{
@@ -1313,9 +1369,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_apvlh")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8vu17")
 }, {
 "duration": 1.0,
@@ -1334,9 +1387,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_q277q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ot4n")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_45sbi")
 }, {
 "duration": 1.0,
@@ -1353,8 +1403,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nctov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apvlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ot4n")
 }],
-"loop": true,
+"loop": false,
 "name": &"small_idle_walk",
 "speed": 60.0
 }, {
@@ -1520,6 +1576,53 @@ animations = [{
 "loop": true,
 "name": &"small_walk",
 "speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1irhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yehi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joanu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq745")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohub4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrwfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dquuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpmwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uysop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbbfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inwpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52f3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqxc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uokj3")
+}],
+"loop": false,
+"name": &"small_walk_idle",
+"speed": 60.0
 }]
 
 [sub_resource type="Animation" id="19"]
@@ -1657,6 +1760,10 @@ libraries = {
 "": SubResource("AnimationLibrary_6wpli")
 }
 
+[node name="StartWalkTimer" type="Timer" parent="."]
+wait_time = 0.217
+one_shot = true
+
 [node name="KoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -1750,6 +1857,7 @@ range_item_cull_mask = 2
 texture = ExtResource("3_1i7hk")
 
 [connection signal="animation_finished" from="Mario" to="." method="_on_mario_animation_finished"]
+[connection signal="timeout" from="StartWalkTimer" to="." method="_on_start_walk_timer_timeout"]
 [connection signal="timeout" from="KoyoteTimer" to="." method="_on_KoyoteTimer_timeout"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]

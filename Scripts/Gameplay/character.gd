@@ -14,6 +14,8 @@ var sneaking = false;
 var falling = false;
 var arriving = false;
 
+var friction = false;
+
 var died = false;
 var deadwait = false;
 
@@ -73,6 +75,11 @@ var RTFCanDecrease = false;
 var carrying = false;
 var kicking = false;
 
+var max_speed = 0;
+
+var startingWalk = false;
+var stoppedWalk = false;
+
 func _ready():
 	await get_tree().process_frame;
 	invincible = false;
@@ -95,346 +102,26 @@ func _physics_process(delta):
 	if (!canMove):
 		return;
 	
-	if (current_sprite.animation != currentPowerup+"_arrive"):
-		current_sprite.position.y = 0;
-		
-	#Head Hit Raycasts
-	if (rcd1.is_colliding()): upAreaCollide(rcd1);
-	elif (rcd2.is_colliding()): upAreaCollide(rcd2);
-	elif (rcd3.is_colliding()): upAreaCollide(rcd3);
-	elif (rcd4.is_colliding()): upAreaCollide(rcd4);
-	elif (rcd5.is_colliding()): upAreaCollide(rcd5);
+	fixAnimationsOffset();
+	checkHeadHitRaycasts();
+	moveRaycastsPositions();
+	applyGravity();
+	initializeMaxSpeed();
+	setOutFlagPoleMovement();
 	
-	#Move Raycast Positions
-	if (!$SmallCollision.disabled): $UpArea.position.y = 7;
-	if (!$SneakCollision.disabled): $UpArea.position.y = 17;
-	if (!$MushCollision.disabled): $UpArea.position.y = -42;
+	if (canMoveCheck()):
+		fireflowerAttackController();
+		runAnimationSpeedController();
+		checkSprintInput();
+		jumpAnimationsController();
+		driftAnimationController();
+		mainMovementController();
+		readyToFlyController(delta);
+		jumpAndFrictionController();
+		sneakController();
+		obligatorySneakController();
+		setKickingAnimation();
 	
-	#Gravity
-	if (!deadwait && !changingPowerup):
-		velocity.y += gravity
-	var friction = false;
-	
-	if (velocity.y > max_fall):
-		velocity.y = max_fall;
-	
-	#Walk Animation Speed Controller
-	var max_speed = 0;
-	
-	#In Flag Pole
-	if (in_flag_pole):
-		pass
-	
-	#Out Flag Pole
-	if (course_clear && !in_flag_pole):
-		velocity.x = max_walk_speed;
-	
-	if (!died && !in_flag_pole && !changingPowerup):
-		#Fireflower attack
-		if (Input.is_action_just_pressed("y") || Input.is_action_just_pressed("x")):
-			if (currentPowerup == "fireflower" && !attacking && canAttack && !sneaking):
-				if (attacks < 3):
-					attacks += 1;
-					attacking = true;
-					drifting = false;
-					$AttackingTimer.start();
-					current_sprite.play(currentPowerup+"_attack");
-					
-					$Fireball.play();
-					
-					#Generate Fireball
-					#var inst = get_parent().fireball[Global.CurrentAppeareance].instance();
-					#inst.position = position;
-					#inst.position.y -= 32;
-					#get_parent().add_child(inst);
-					#if (current_sprite.flip_h):
-						#inst.direction = "left";
-						#inst.position.x -= 26;
-					#else:
-						#inst.direction = "right";
-						#inst.position.x += 26;
-					
-					if (attacks == 3):
-						attacks = 0;
-						canAttack = false;
-						$BigAttackingTimer.start();
-		
-		#Max Speed and Run Animation
-		if (star && running):
-			max_speed = max_run_speed*1.25;
-			var checkanim = (current_sprite.animation == currentPowerup+"_walk" ||
-			current_sprite.animation == currentPowerup+"_run" ||
-			current_sprite.animation == currentPowerup+"_carry_item_walk");
-			if (checkanim && abs(velocity.x) > max_walk_speed):
-				current_sprite.speed_scale = abs(velocity.x)/(max_walk_speed*1.25);
-			else:
-				current_sprite.speed_scale = 1;
-		elif (star && !running):
-			current_sprite.speed_scale = 1.25;
-			max_speed = max_walk_speed*1.25;
-		elif (running):
-			max_speed = max_run_speed;
-			var checkanim = (current_sprite.animation == currentPowerup+"_walk" ||
-			current_sprite.animation == currentPowerup+"_run" ||
-			current_sprite.animation == currentPowerup+"_carry_item_walk");
-			if (checkanim && abs(velocity.x) > max_walk_speed):
-				current_sprite.speed_scale = abs(velocity.x)/max_walk_speed;
-			else:
-				current_sprite.speed_scale = 1;
-		else:
-			current_sprite.speed_scale = 1;
-			max_speed = max_walk_speed;
-		
-		#Sprint Controller
-		if (Input.is_action_pressed("y") || Input.is_action_pressed("x")):
-			running = true;
-		else:
-			running = false;
-		
-		#Jump Animation Controller
-		if (!is_on_floor() && !attacking):
-			if (carrying):
-				if (current_sprite.animation != currentPowerup+"_carry_item_jump"):
-					if (!sneaking):
-						current_sprite.play(currentPowerup+"_carry_item_jump");
-			elif (currentRTFLevel == 7):
-				if (current_sprite.animation != currentPowerup+"_run_jump"):
-					if (!sneaking):
-						current_sprite.play(currentPowerup+"_run_jump");
-			else:
-				if (velocity.y <= 0):
-					if (current_sprite.animation != currentPowerup+"_jump"):
-						if  (falling || jumping):
-							if (!sneaking):
-								current_sprite.play(currentPowerup+"_jump");
-							else:
-								pass
-				else:
-					if (current_sprite.animation != currentPowerup+"_fall"):
-						if  (falling || jumping):
-							if (!sneaking):
-								current_sprite.play(currentPowerup+"_fall");
-							else:
-								pass
-				
-			if (!falling):
-				koyoteTime = true;
-				$KoyoteTimer.start();
-				falling = true;
-		elif (is_on_floor()):
-			if (jumping):
-				current_sprite.play(currentPowerup+"_arrive");
-				arriving = true;
-				current_sprite.position.y = 5;
-			
-			jumping = false;
-			koyoteTime = false;
-			falling = false;
-			singlegridcheck = false;
-			lastScore = 0;
-		
-		#Movement Controller
-		if (drifting && is_on_floor()):
-			current_sprite.play(currentPowerup+"_drift");
-			if (!$SoundDrift.playing):
-				$SoundDrift.play();
-		else:
-			if ($SoundDrift.playing):
-				$SoundDrift.stop();
-		
-		var inpchckr = Input.is_action_pressed("right") || Input.is_action_pressed("dright");
-		var inpchckl = Input.is_action_pressed("left") || Input.is_action_pressed("dleft");
-		var sneakchck = !sneaking || !is_on_floor();
-		if (inpchckr && sneakchck && !course_clear):
-			var acc = acceleration * 2.5;
-			if (is_on_floor() && !attacking):
-				if (current_sprite.flip_h):
-					current_sprite.flip_h = false;
-					drifting = false;
-			
-				if (velocity.x < 0 && abs(velocity.x) > max_run_speed*0.8 && !carrying):
-					drifting = true;
-				
-				if (velocity.x > 0 && drifting):
-					drifting = false;
-				
-				if (carrying):
-					current_sprite.play(currentPowerup+"_carry_item_walk");
-				elif (!drifting):
-					if (currentRTFLevel == 7):
-						current_sprite.play(currentPowerup+"_run");
-					else:
-						current_sprite.play(currentPowerup+"_walk");
-				
-				var chck1 = velocity.x > 0 && !current_sprite.flip_h
-				var chck2 = velocity.x < 0 && current_sprite.flip_h;
-				var chckfinal = (chck1 || chck2);
-				if (chckfinal):
-					acc = acceleration;
-				else:
-					acc = acceleration * 2;
-			else:
-				if (current_sprite.flip_h):
-					current_sprite.flip_h = false;
-			velocity.x = min(velocity.x + acc, max_speed);
-		elif (inpchckl && sneakchck && !course_clear):
-			var acc = acceleration * 2.5;
-			if (is_on_floor() && !attacking):
-				if (!current_sprite.flip_h):
-					current_sprite.flip_h = true;
-					drifting = false;
-				
-				if (velocity.x > 0 && abs(velocity.x) > max_run_speed*0.8 && !carrying):
-					drifting = true;
-					
-				if (velocity.x < 0 && drifting):
-					drifting = false;
-					
-				var chck1 = velocity.x > 0 && !current_sprite.flip_h
-				var chck2 = velocity.x < 0 && current_sprite.flip_h;
-				var chckfinal = (chck1 || chck2);
-				if (chckfinal):
-					acc = acceleration;
-				else:
-					acc = acceleration * 2;
-				
-				if (carrying):
-					current_sprite.play(currentPowerup+"_carry_item_walk");
-				elif (!drifting):
-					if (currentRTFLevel == 7):
-						current_sprite.play(currentPowerup+"_run");
-					else:
-						current_sprite.play(currentPowerup+"_walk");
-			else:
-				if (!current_sprite.flip_h):
-					current_sprite.flip_h = true;
-			velocity.x = max(velocity.x - acc, -max_speed);
-		else:
-			friction = true;
-			if (is_on_floor() && !attacking && !arriving):
-				if (!sneaking && !drifting):
-					if (round(abs(velocity.x)) > 0):
-						if (carrying):
-							current_sprite.play(currentPowerup+"_carry_item_walk");
-						else:
-							current_sprite.play(currentPowerup+"_walk");
-					else:
-						if (carrying):
-							current_sprite.play(currentPowerup+"_carry_item_idle");
-						else:
-							current_sprite.play(currentPowerup+"_idle");
-				if (abs(velocity.x) <= max_walk_speed*0.1):
-					velocity.x = 0;
-				if (abs(velocity.x) <= max_walk_speed*0.4):
-					drifting = false;
-			if (inpchckr && !course_clear):
-				if (current_sprite.flip_h):
-					current_sprite.flip_h = false;
-			if (inpchckl && !course_clear):
-				if (!current_sprite.flip_h):
-					current_sprite.flip_h = true;
-					
-		
-		#Ready To Fly System
-		if (is_on_floor() && abs(velocity.x) >= max_run_speed*0.8):
-			if ($RTFDecreaseTimer.is_stopped()):
-				$RTFDecreaseTimer.stop();
-			RTFCanDecrease = false;
-			
-			RTFDecrease = 0.0;
-			RTFIncrease += delta;
-			if (RTFIncrease >= 0.125):
-				RTFIncrease = 0.0;
-				if (currentRTFLevel < 7):
-					currentRTFLevel += 1;
-		elif (RTFCanDecrease && abs(velocity.x) < max_run_speed*0.8):
-			RTFIncrease = 0.0;
-			RTFDecrease += delta;
-			if (RTFDecrease >= 0.2):
-				RTFDecrease = 0.0;
-				if (currentRTFLevel > 0):
-					currentRTFLevel -= 1;
-		
-		if (abs(velocity.x) < max_run_speed*0.8):
-			if ($RTFDecreaseTimer.is_stopped() && !RTFCanDecrease):
-				$RTFDecreaseTimer.start();
-		
-		if (currentRTFLevel == 7):
-			if (!$SoundReadytofly.playing):
-				$SoundReadytofly.play();
-		else:
-			if ($SoundReadytofly.playing):
-				$SoundReadytofly.stop();
-		
-		#Jump and friction controller
-		if (is_on_floor() || koyoteTime):
-			if (!course_clear):
-				if (Input.is_action_just_pressed("a") || Input.is_action_just_pressed("b")):
-					#High Jump Controller
-					if (abs(velocity.x) >= max_run_speed):
-						velocity.y = jump_h*1.1;
-					else:
-						velocity.y = jump_h;
-					
-					if (!sneaking && !attacking):
-						current_sprite.play(currentPowerup+"_jump");
-					jumping = true;
-					$SoundJump.play();
-					koyoteTime = false;
-					drifting = false;
-					
-					detectSingleGrid();
-			if (friction):
-				velocity.x = lerp(velocity.x, 0.0, 0.0625);
-		else:
-			if (friction):
-				velocity.x = lerp(velocity.x, 0.0, 0.01);
-		
-		if (Input.is_action_just_released("a") || Input.is_action_just_released("b")):
-			if (jumping && velocity.y < jump_h*0.35 && !is_on_floor() && !course_clear):
-				velocity.y = jump_h*0.35
-				if (!sneaking):
-					current_sprite.play(currentPowerup+"_jump");
-				
-		#Sneak Controller
-		if (Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
-			if (is_on_floor() && !course_clear && !sneaking):
-				sneak();
-		
-		if (Input.is_action_just_released("down") || Input.is_action_just_released("ddown")):
-			if (sneaking && !course_clear && !obligatorysneak):
-				releaseSneak();
-		
-		#Obligatory Sneak Controller
-		if ($ObligatorySneakRaycast.is_colliding()):
-			if (currentPowerup != "small"):
-				var body = $ObligatorySneakRaycast.get_collider();
-				if (body.is_in_group("Solid") && !body.is_in_group("Hurt")):
-					obligatorysneak = true;
-					if (!sneaking):
-						sneak();
-				else:
-					obligatorysneak = false;
-					if (sneaking) && !(Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
-						releaseSneak();
-			else:
-				obligatorysneak = false;
-				if (sneaking) && !(Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
-					releaseSneak();
-		else:
-			if (sneaking && obligatorysneak) && !(Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
-				releaseSneak();
-				obligatorysneak = false;
-				
-		#Kicking Animation
-		if (kicking):
-			current_sprite.play(currentPowerup+"_kick");
-		
-		#Debug
-		#if (Input.is_action_just_pressed("r")):
-		#	if (!died): die();
-		
-	#Global Movement Controller
 	move_and_slide();
 
 func sneak():
@@ -725,3 +412,367 @@ func _on_mario_animation_finished() -> void:
 		current_sprite.play(currentPowerup+"_idle");
 		current_sprite.frame = 80;
 		current_sprite.position.y = 0;
+	
+	if (current_sprite.animation == currentPowerup+"_walk_idle"):
+		stoppedWalk = false;
+		current_sprite.position.y = 0;
+		current_sprite.play(currentPowerup+"_idle");
+		current_sprite.frame = 80;
+
+func checkHeadHitRaycasts():
+	if (rcd1.is_colliding()): upAreaCollide(rcd1);
+	elif (rcd2.is_colliding()): upAreaCollide(rcd2);
+	elif (rcd3.is_colliding()): upAreaCollide(rcd3);
+	elif (rcd4.is_colliding()): upAreaCollide(rcd4);
+	elif (rcd5.is_colliding()): upAreaCollide(rcd5);
+
+func moveRaycastsPositions():
+	if (!$SmallCollision.disabled): $UpArea.position.y = 7;
+	if (!$SneakCollision.disabled): $UpArea.position.y = 17;
+	if (!$MushCollision.disabled): $UpArea.position.y = -42;
+
+func fixAnimationsOffset():
+	if (current_sprite.animation != currentPowerup+"_arrive" &&
+	current_sprite.animation != currentPowerup+"_walk_idle"):
+		current_sprite.position.y = 0;
+
+func applyGravity():
+	if (!deadwait && !changingPowerup):
+		velocity.y += gravity
+	friction = false;
+	if (velocity.y > max_fall):
+		velocity.y = max_fall;
+
+func initializeMaxSpeed():
+	max_speed = 0;
+
+func setOutFlagPoleMovement():
+	if (course_clear && !in_flag_pole):
+		velocity.x = max_walk_speed;
+
+func canMoveCheck():
+	return (!died && !in_flag_pole && !changingPowerup);
+
+func fireflowerAttackController():
+	if (Input.is_action_just_pressed("y") || Input.is_action_just_pressed("x")):
+		if (currentPowerup == "fireflower" && !attacking && canAttack && !sneaking):
+			if (attacks < 3):
+				attacks += 1;
+				attacking = true;
+				drifting = false;
+				$AttackingTimer.start();
+				current_sprite.play(currentPowerup+"_attack");
+				
+				$Fireball.play();
+				
+				#Generate Fireball
+				#var inst = get_parent().fireball[Global.CurrentAppeareance].instance();
+				#inst.position = position;
+				#inst.position.y -= 32;
+				#get_parent().add_child(inst);
+				#if (current_sprite.flip_h):
+					#inst.direction = "left";
+					#inst.position.x -= 26;
+				#else:
+					#inst.direction = "right";
+					#inst.position.x += 26;
+				
+				if (attacks == 3):
+					attacks = 0;
+					canAttack = false;
+					$BigAttackingTimer.start();
+
+func runAnimationSpeedController():
+	if (star && running):
+		max_speed = max_run_speed*1.25;
+		var checkanim = (current_sprite.animation == currentPowerup+"_walk" ||
+		current_sprite.animation == currentPowerup+"_run" ||
+		current_sprite.animation == currentPowerup+"_carry_item_walk");
+		if (checkanim && abs(velocity.x) > max_walk_speed):
+			current_sprite.speed_scale = abs(velocity.x)/(max_walk_speed*1.25);
+		else:
+			current_sprite.speed_scale = 1;
+	elif (star && !running):
+		current_sprite.speed_scale = 1.25;
+		max_speed = max_walk_speed*1.25;
+	elif (running):
+		max_speed = max_run_speed;
+		var checkanim = (current_sprite.animation == currentPowerup+"_walk" ||
+		current_sprite.animation == currentPowerup+"_run" ||
+		current_sprite.animation == currentPowerup+"_carry_item_walk");
+		if (checkanim && abs(velocity.x) > max_walk_speed):
+			current_sprite.speed_scale = abs(velocity.x)/max_walk_speed;
+		else:
+			current_sprite.speed_scale = 1;
+	else:
+		current_sprite.speed_scale = 1;
+		max_speed = max_walk_speed;
+
+func checkSprintInput():
+	if (Input.is_action_pressed("y") || Input.is_action_pressed("x")):
+		running = true;
+	else:
+		running = false;
+
+func jumpAnimationsController():
+	if (!is_on_floor() && !attacking):
+		if (carrying):
+			if (current_sprite.animation != currentPowerup+"_carry_item_jump"):
+				if (!sneaking):
+					current_sprite.play(currentPowerup+"_carry_item_jump");
+		elif (currentRTFLevel == 7):
+			if (current_sprite.animation != currentPowerup+"_run_jump"):
+				if (!sneaking):
+					current_sprite.play(currentPowerup+"_run_jump");
+		else:
+			if (velocity.y <= 0):
+				if (current_sprite.animation != currentPowerup+"_jump"):
+					if  (falling || jumping):
+						if (!sneaking):
+							current_sprite.play(currentPowerup+"_jump");
+						else:
+							pass
+			else:
+				if (current_sprite.animation != currentPowerup+"_fall"):
+					if  (falling || jumping):
+						if (!sneaking):
+							current_sprite.play(currentPowerup+"_fall");
+						else:
+							pass
+			
+		if (!falling):
+			koyoteTime = true;
+			$KoyoteTimer.start();
+			falling = true;
+	elif (is_on_floor()):
+		if (jumping && abs(round(velocity.x)) < 150):
+			current_sprite.play(currentPowerup+"_arrive");
+			arriving = true;
+			current_sprite.position.y = 5;
+			velocity.x = 0;
+		
+		jumping = false;
+		koyoteTime = false;
+		falling = false;
+		singlegridcheck = false;
+		lastScore = 0;
+
+func driftAnimationController():
+	if (drifting && is_on_floor()):
+		current_sprite.play(currentPowerup+"_drift");
+		if (!$SoundDrift.playing):
+			$SoundDrift.play();
+	else:
+		if ($SoundDrift.playing):
+			$SoundDrift.stop();
+
+func mainMovementController():
+	var inpchckr = Input.is_action_pressed("right") || Input.is_action_pressed("dright");
+	var inpchckl = Input.is_action_pressed("left") || Input.is_action_pressed("dleft");
+	var sneakchck = !sneaking || !is_on_floor();
+	if (inpchckr && sneakchck && !course_clear):
+		var acc = acceleration * 2.5;
+		if (is_on_floor() && !attacking):
+			if (current_sprite.flip_h):
+				current_sprite.flip_h = false;
+				drifting = false;
+		
+			if (velocity.x < 0 && abs(velocity.x) > max_run_speed*0.8 && !carrying):
+				drifting = true;
+			
+			if (velocity.x > 0 && drifting):
+				drifting = false;
+			
+			if (!startingWalk && current_sprite.animation == currentPowerup+"_idle"):
+				startingWalk = true;
+				$StartWalkTimer.start();
+			
+			if (startingWalk):
+				current_sprite.play(currentPowerup+"_idle_walk");
+			elif (carrying):
+				current_sprite.play(currentPowerup+"_carry_item_walk");
+			elif (!drifting):
+				if (currentRTFLevel == 7):
+					current_sprite.play(currentPowerup+"_run");
+				else:
+					current_sprite.play(currentPowerup+"_walk");
+			
+			var chck1 = velocity.x > 0 && !current_sprite.flip_h
+			var chck2 = velocity.x < 0 && current_sprite.flip_h;
+			var chckfinal = (chck1 || chck2);
+			if (chckfinal):
+				acc = acceleration;
+			else:
+				acc = acceleration * 2;
+		else:
+			if (current_sprite.flip_h):
+				current_sprite.flip_h = false;
+		velocity.x = min(velocity.x + acc, max_speed);
+		stoppedWalk = false;
+	elif (inpchckl && sneakchck && !course_clear):
+		var acc = acceleration * 2.5;
+		if (is_on_floor() && !attacking):
+			if (!current_sprite.flip_h):
+				current_sprite.flip_h = true;
+				drifting = false;
+			
+			if (velocity.x > 0 && abs(velocity.x) > max_run_speed*0.8 && !carrying):
+				drifting = true;
+				
+			if (velocity.x < 0 && drifting):
+				drifting = false;
+				
+			var chck1 = velocity.x > 0 && !current_sprite.flip_h
+			var chck2 = velocity.x < 0 && current_sprite.flip_h;
+			var chckfinal = (chck1 || chck2);
+			if (chckfinal):
+				acc = acceleration;
+			else:
+				acc = acceleration * 2;
+			
+			if (!startingWalk && current_sprite.animation == currentPowerup+"_idle"):
+				startingWalk = true;
+				$StartWalkTimer.start();
+			
+			if (startingWalk):
+				current_sprite.play(currentPowerup+"_idle_walk");
+			elif (carrying):
+				current_sprite.play(currentPowerup+"_carry_item_walk");
+			elif (!drifting):
+				if (currentRTFLevel == 7):
+					current_sprite.play(currentPowerup+"_run");
+				else:
+					current_sprite.play(currentPowerup+"_walk");
+		else:
+			if (!current_sprite.flip_h):
+				current_sprite.flip_h = true;
+		velocity.x = max(velocity.x - acc, -max_speed);
+		stoppedWalk = false;
+	else:
+		friction = true;
+		if (is_on_floor() && !attacking && !arriving):
+			if (!sneaking && !drifting):
+				if (round(abs(velocity.x)) > 80):
+					if (carrying):
+						current_sprite.play(currentPowerup+"_carry_item_walk");
+					else:
+						current_sprite.play(currentPowerup+"_walk");
+				else:
+					velocity.x = 0;
+					if (!stoppedWalk && current_sprite.animation == currentPowerup+"_walk"):
+						stoppedWalk = true;
+						current_sprite.play(currentPowerup+"_walk_idle");
+						current_sprite.position.y = 4;
+					
+					if (!stoppedWalk):
+						if (carrying):
+							current_sprite.play(currentPowerup+"_carry_item_idle");
+						else:
+							current_sprite.play(currentPowerup+"_idle");
+			
+			if (abs(velocity.x) <= max_walk_speed*0.4):
+				drifting = false;
+		if (inpchckr && !course_clear):
+			if (current_sprite.flip_h):
+				current_sprite.flip_h = false;
+		if (inpchckl && !course_clear):
+			if (!current_sprite.flip_h):
+				current_sprite.flip_h = true;
+
+func jumpAndFrictionController():
+	if (is_on_floor() || koyoteTime):
+		if (!course_clear):
+			if (Input.is_action_just_pressed("a") || Input.is_action_just_pressed("b")):
+				#High Jump Controller
+				if (abs(velocity.x) >= max_run_speed):
+					velocity.y = jump_h*1.1;
+				else:
+					velocity.y = jump_h;
+				
+				if (!sneaking && !attacking):
+					current_sprite.play(currentPowerup+"_jump");
+				jumping = true;
+				$SoundJump.play();
+				koyoteTime = false;
+				drifting = false;
+				
+				detectSingleGrid();
+		if (friction):
+			velocity.x = lerp(velocity.x, 0.0, 0.0625);
+	else:
+		if (friction):
+			velocity.x = lerp(velocity.x, 0.0, 0.01);
+		
+	if (Input.is_action_just_released("a") || Input.is_action_just_released("b")):
+		if (jumping && velocity.y < jump_h*0.35 && !is_on_floor() && !course_clear):
+			velocity.y = jump_h*0.35
+			if (!sneaking):
+				current_sprite.play(currentPowerup+"_jump");
+
+func readyToFlyController(delta):
+	if (is_on_floor() && abs(velocity.x) >= max_run_speed*0.8):
+		if ($RTFDecreaseTimer.is_stopped()):
+			$RTFDecreaseTimer.stop();
+		RTFCanDecrease = false;
+		
+		RTFDecrease = 0.0;
+		RTFIncrease += delta;
+		if (RTFIncrease >= 0.125):
+			RTFIncrease = 0.0;
+			if (currentRTFLevel < 7):
+				currentRTFLevel += 1;
+	elif (RTFCanDecrease && abs(velocity.x) < max_run_speed*0.8):
+		RTFIncrease = 0.0;
+		RTFDecrease += delta;
+		if (RTFDecrease >= 0.2):
+			RTFDecrease = 0.0;
+			if (currentRTFLevel > 0):
+				currentRTFLevel -= 1;
+	
+	if (abs(velocity.x) < max_run_speed*0.8):
+		if ($RTFDecreaseTimer.is_stopped() && !RTFCanDecrease):
+			$RTFDecreaseTimer.start();
+	
+	if (currentRTFLevel == 7):
+		if (!$SoundReadytofly.playing):
+			$SoundReadytofly.play();
+	else:
+		if ($SoundReadytofly.playing):
+			$SoundReadytofly.stop();
+
+func sneakController():
+	if (Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
+		if (is_on_floor() && !course_clear && !sneaking):
+			sneak();
+	
+	if (Input.is_action_just_released("down") || Input.is_action_just_released("ddown")):
+		if (sneaking && !course_clear && !obligatorysneak):
+			releaseSneak();
+
+func obligatorySneakController():
+	if ($ObligatorySneakRaycast.is_colliding()):
+		if (currentPowerup != "small"):
+			var body = $ObligatorySneakRaycast.get_collider();
+			if (body.is_in_group("Solid") && !body.is_in_group("Hurt")):
+				obligatorysneak = true;
+				if (!sneaking):
+					sneak();
+			else:
+				obligatorysneak = false;
+				if (sneaking) && !(Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
+					releaseSneak();
+		else:
+			obligatorysneak = false;
+			if (sneaking) && !(Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
+				releaseSneak();
+	else:
+		if (sneaking && obligatorysneak) && !(Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
+			releaseSneak();
+			obligatorysneak = false;
+
+func setKickingAnimation():
+	if (kicking):
+		current_sprite.play(currentPowerup+"_kick");
+
+func _on_start_walk_timer_timeout() -> void:
+	startingWalk = false;
