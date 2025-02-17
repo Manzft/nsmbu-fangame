@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=4 uid="uid://glteyvs4rjs6"]
+[gd_scene load_steps=204 format=4 uid="uid://glteyvs4rjs6"]
 
 [ext_resource type="Texture2D" uid="uid://odaywx01maor" path="res://Sprites/Guides/start_menu_guide.png" id="1_grs5x"]
 [ext_resource type="Texture2D" uid="uid://cgt2n7edjmbpg" path="res://Sprites/UI/StartMenu/lplusr.png" id="1_ppynu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="4_x8hp7"]
 [ext_resource type="AudioStream" uid="uid://c72f1tua7tlsy" path="res://Music/UI/StartMenu/title_screen.mp3" id="6_p2fi4"]
 [ext_resource type="Texture2D" uid="uid://c6uhfwy5jp1l2" path="res://Sprites/Gameplay/Tilesets/Tileset1/Pa1_1-1_1.png" id="8_mum5i"]
+[ext_resource type="Shader" path="res://Shaders/circle.gdshader" id="13_ellju"]
 [ext_resource type="Texture2D" uid="uid://kg7u68o3k0hp" path="res://Sprites/Gameplay/Mario/Small/idle-walk.png" id="135_v7bvi"]
 [ext_resource type="Texture2D" uid="uid://5t3b5cliysvw" path="res://Sprites/Gameplay/Mario/Small/walk.png" id="136_r7k5c"]
 
@@ -1769,6 +1770,8 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_7cmww")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejl5q"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_svuna"]
 atlas = ExtResource("4_x8hp7")
 region = Rect2(0, 0, 84, 108)
@@ -3033,6 +3036,8 @@ animations = [{
 "speed": 70.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6hx2"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_u0hq6"]
 font = ExtResource("2_vntcj")
 font_size = 80
@@ -3156,6 +3161,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_1n11v"]
 resource_name = "idle"
@@ -3209,6 +3238,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-350, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.05]
 }
 
 [sub_resource type="Animation" id="Animation_a2w8k"]
@@ -3323,6 +3364,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_svyod"]
 _data = {
@@ -3330,6 +3395,12 @@ _data = {
 "idle": SubResource("Animation_1n11v"),
 "start": SubResource("Animation_a2w8k")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25gtb"]
+shader = ExtResource("13_ellju")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
 
 [node name="StartMenu" type="CanvasLayer"]
 script = ExtResource("1_ycm04")
@@ -3377,6 +3448,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Mario" type="AnimatedSprite2D" parent="MarioContainer"]
+material = SubResource("ShaderMaterial_ejl5q")
 position = Vector2(20, -166)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_5borq")
@@ -3385,7 +3457,7 @@ frame_progress = 0.269938
 
 [node name="Guide" type="TextureRect" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0.298039)
+material = SubResource("ShaderMaterial_c6hx2")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -3462,6 +3534,23 @@ grow_vertical = 2
 text = "Oprime"
 label_settings = SubResource("LabelSettings_u0hq6")
 
+[node name="Shadow" type="Label" parent="PressContainer/Press"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -38.5
+offset_right = 137.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Oprime"
+label_settings = SubResource("LabelSettings_u0hq6")
+
 [node name="L+R" type="TextureRect" parent="PressContainer/Press"]
 layout_mode = 1
 anchors_preset = 6
@@ -3469,13 +3558,14 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 18.0
-offset_top = -36.5
-offset_right = 261.0
-offset_bottom = 46.5
+offset_left = 13.0
+offset_top = -39.5
+offset_right = 263.0
+offset_bottom = 50.5
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("1_ppynu")
+stretch_mode = 2
 
 [node name="Author&Date" type="Label" parent="."]
 visible = false
@@ -3507,6 +3597,15 @@ libraries = {
 [node name="StartMusicTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_25gtb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="animation_finished" from="MarioContainer/Mario" to="." method="_on_mario_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

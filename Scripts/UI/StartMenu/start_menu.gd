@@ -7,7 +7,8 @@ func _ready():
 	$MarioContainer/Mario.play("idle");
 	
 func _process(delta: float) -> void:
-	return
+	$ColorRect.material.set_shader_parameter("screen_width", $ColorRect.size.x);
+	$ColorRect.material.set_shader_parameter("screen_height", $ColorRect.size.y);
 	#$ParallaxBackground.autoscroll.x = $Parallax2D.autoscroll.x*0.8;
 
 func _on_start_music_timer_timeout() -> void:
@@ -15,7 +16,7 @@ func _on_start_music_timer_timeout() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "start"):
-		$AnimationPlayer.play("idle");
+		$AnimationPlayer.play("idle");3
 		$MarioContainer/Mario.play("idle-walk");
 
 func _on_mario_animation_finished() -> void:

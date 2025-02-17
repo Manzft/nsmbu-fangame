@@ -1,0 +1,224 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpcmqs7arfgav"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Loading/loading.gd" id="1_7tubw"]
+[ext_resource type="Shader" path="res://Shaders/tiling.gdshader" id="1_iem2l"]
+[ext_resource type="Texture2D" uid="uid://cydq7nukbd5n1" path="res://Sprites/UI/LoadingScreen/bg.png" id="1_rhgb5"]
+[ext_resource type="PackedScene" uid="uid://glteyvs4rjs6" path="res://Scenes/UI/start_menu.tscn" id="2_pr3ss"]
+[ext_resource type="FontFile" uid="uid://58ndbqm0rupc" path="res://Fonts/New Super Mario Font U.ttf" id="3_f0ewk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmwas"]
+shader = ExtResource("1_iem2l")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0u8vt"]
+font = ExtResource("3_f0ewk")
+font_size = 80
+font_color = Color(0.121569, 0.121569, 0.121569, 1)
+outline_size = 20
+outline_color = Color(0.589096, 0.589096, 0.589096, 1)
+
+[sub_resource type="Animation" id="Animation_rabk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingTextContainer/LoadingText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingTextContainer/LoadingText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-471, -99)]
+}
+
+[sub_resource type="Animation" id="Animation_mi7k2"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingTextContainer/LoadingText:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingTextContainer/LoadingText:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-471, -99), Vector2(-488, -102)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fshh8"]
+_data = {
+"RESET": SubResource("Animation_rabk6"),
+"idle": SubResource("Animation_mi7k2")
+}
+
+[sub_resource type="Animation" id="Animation_j4pg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l1ejc"]
+resource_name = "in"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pgtij"]
+resource_name = "out"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7qos"]
+_data = {
+"RESET": SubResource("Animation_j4pg5"),
+"in": SubResource("Animation_l1ejc"),
+"out": SubResource("Animation_pgtij")
+}
+
+[node name="Loading" type="CanvasLayer"]
+script = ExtResource("1_7tubw")
+start_menu = ExtResource("2_pr3ss")
+
+[node name="Bg" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_pmwas")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rhgb5")
+stretch_mode = 1
+
+[node name="LoadingTextContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -60.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="LoadingText" type="Label" parent="LoadingTextContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -511.0
+offset_top = -139.0
+offset_right = -86.0
+offset_bottom = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Cargando..."
+label_settings = SubResource("LabelSettings_0u8vt")
+
+[node name="Shadow" type="Label" parent="LoadingTextContainer/LoadingText"]
+modulate = Color(0.646029, 0.646029, 0.646029, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -38.5
+offset_right = 212.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cargando..."
+label_settings = SubResource("LabelSettings_0u8vt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingTextContainer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_fshh8")
+}
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_a7qos")
+}
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
+[connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_color_rect_animation_player_animation_finished"]
