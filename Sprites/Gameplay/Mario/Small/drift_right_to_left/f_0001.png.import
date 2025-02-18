@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clafb1d3igi1a"
-path="res://.godot/imported/f-09.png-4265b2e7610145b13c4514c7d04a54a4.ctex"
+uid="uid://d2marqplh8t4s"
+path="res://.godot/imported/f_0001.png-b07967d9932905d57593a336b78034ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f-09.png"
-dest_files=["res://.godot/imported/f-09.png-4265b2e7610145b13c4514c7d04a54a4.ctex"]
+source_file="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0001.png"
+dest_files=["res://.godot/imported/f_0001.png-b07967d9932905d57593a336b78034ed.ctex"]
 
 [params]
 

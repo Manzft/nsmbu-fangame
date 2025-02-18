@@ -1,4 +1,4 @@
-[gd_scene load_steps=295 format=3 uid="uid://dhyetjsw1hngl"]
+[gd_scene load_steps=316 format=3 uid="uid://dhyetjsw1hngl"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/character.gd" id="1_cqasu"]
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="2_0r622"]
@@ -55,12 +55,33 @@
 [ext_resource type="Texture2D" uid="uid://c8maujtbn2og4" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove28.png" id="29_ebx4r"]
 [ext_resource type="Texture2D" uid="uid://cfbn66n2cjeu2" path="res://Sprites/Gameplay/Mario/Small/fall/Fall001.png" id="30_7b1n4"]
 [ext_resource type="Texture2D" uid="uid://bhsi0lhn2q4ut" path="res://Sprites/Gameplay/Mario/Small/drift_left.png" id="30_506vh"]
+[ext_resource type="Texture2D" uid="uid://ck3wsrqjh15sv" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-0.png" id="31_abgoq"]
+[ext_resource type="Texture2D" uid="uid://bnv6ymy4qpeuy" path="res://Sprites/Gameplay/Mario/Small/drift_right.png" id="31_w1b17"]
 [ext_resource type="Texture2D" uid="uid://ct0k4jggg72ye" path="res://Sprites/Gameplay/Mario/Small/fall/Fall002.png" id="31_ydkig"]
+[ext_resource type="Texture2D" uid="uid://dhmls40pw23y2" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-1.png" id="32_hfktt"]
 [ext_resource type="Texture2D" uid="uid://cl4pnoqficokc" path="res://Sprites/Gameplay/Mario/Small/fall/Fall003.png" id="32_stwq7"]
 [ext_resource type="Texture2D" uid="uid://btga6b1urhpfs" path="res://Sprites/Gameplay/Mario/Small/fall/Fall004.png" id="33_nkkaa"]
+[ext_resource type="Texture2D" uid="uid://dtrx0ha4vxq5f" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-2.png" id="33_wlihd"]
+[ext_resource type="Texture2D" uid="uid://dwlr0eav328pq" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-3.png" id="34_ounrl"]
 [ext_resource type="Texture2D" uid="uid://bwgbu8udmq8dn" path="res://Sprites/Gameplay/Mario/Small/fall/Fall005.png" id="34_sj1pi"]
 [ext_resource type="Texture2D" uid="uid://d0klanu16ssk7" path="res://Sprites/Gameplay/Mario/Small/fall/Fall006.png" id="35_juedl"]
+[ext_resource type="Texture2D" uid="uid://dbx7kakrajdw5" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-4.png" id="35_nusg2"]
+[ext_resource type="Texture2D" uid="uid://dtla2ybm1c84u" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-5.png" id="36_vugbi"]
+[ext_resource type="Texture2D" uid="uid://dglljtasro5eh" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-6.png" id="37_b6ela"]
 [ext_resource type="Texture2D" uid="uid://kg7u68o3k0hp" path="res://Sprites/Gameplay/Mario/Small/idle-walk.png" id="37_iekpb"]
+[ext_resource type="Texture2D" uid="uid://bs0jaostobf28" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-7.png" id="38_hink0"]
+[ext_resource type="Texture2D" uid="uid://brrpy1pgtr6ga" path="res://Sprites/Gameplay/Mario/Small/drift_left_to_right/f-8.png" id="39_05w61"]
+[ext_resource type="Texture2D" uid="uid://d2marqplh8t4s" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0001.png" id="41_bxciu"]
+[ext_resource type="Texture2D" uid="uid://3ltqqpg4yvj0" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0002.png" id="42_8tutm"]
+[ext_resource type="Texture2D" uid="uid://et06g3h5i856" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0003.png" id="43_wtnse"]
+[ext_resource type="Texture2D" uid="uid://bb2v78uvf2hke" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0004.png" id="44_jbl04"]
+[ext_resource type="Texture2D" uid="uid://5gcet7ond6q6" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0005.png" id="45_ow6a7"]
+[ext_resource type="Texture2D" uid="uid://cbhfi4xhlqn04" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0006.png" id="46_wnip3"]
+[ext_resource type="Texture2D" uid="uid://beect4lhfndmr" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0007.png" id="47_ygp0u"]
+[ext_resource type="Texture2D" uid="uid://d1t1jadoetmmo" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0008.png" id="48_od6o0"]
+[ext_resource type="Texture2D" uid="uid://b1t61f4o7dtb3" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0009.png" id="49_ii7ug"]
+[ext_resource type="Texture2D" uid="uid://ckiuop3u1lqc4" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0010.png" id="50_h3e7b"]
+[ext_resource type="Texture2D" uid="uid://cap4q7fd0lacv" path="res://Sprites/Gameplay/Mario/Small/drift_right_to_left/f_0011.png" id="51_yf4ji"]
 [ext_resource type="Texture2D" uid="uid://5t3b5cliysvw" path="res://Sprites/Gameplay/Mario/Small/walk.png" id="61_ib1sj"]
 [ext_resource type="Texture2D" uid="uid://ct3ilxw8nrgae" path="res://Sprites/Gameplay/Mario/Small/run/f_0001.png" id="62_75imh"]
 [ext_resource type="Texture2D" uid="uid://du1su1avltq1m" path="res://Sprites/Gameplay/light2dgradient.png" id="62_iwyqy"]
@@ -968,7 +989,85 @@ animations = [{
 "texture": ExtResource("30_506vh")
 }],
 "loop": true,
-"name": &"small_drift",
+"name": &"small_drift_left",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_abgoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_hfktt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_wlihd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ounrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_nusg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_vugbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_b6ela")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_hink0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_05w61")
+}],
+"loop": false,
+"name": &"small_drift_left_right",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_w1b17")
+}],
+"loop": true,
+"name": &"small_drift_right",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_bxciu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_8tutm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_wtnse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_jbl04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ow6a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_wnip3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_ygp0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_od6o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ii7ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_h3e7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_yf4ji")
+}],
+"loop": false,
+"name": &"small_drift_right_left",
 "speed": 60.0
 }, {
 "frames": [{
@@ -1899,7 +1998,7 @@ collide_with_areas = true
 [node name="Mario" type="AnimatedSprite2D" parent="."]
 light_mask = 3
 sprite_frames = SubResource("SpriteFrames_yea5x")
-animation = &"small_just_fall"
+animation = &"small_idle"
 autoplay = "small_idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

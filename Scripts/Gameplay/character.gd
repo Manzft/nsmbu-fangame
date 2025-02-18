@@ -79,6 +79,7 @@ var max_speed = 0;
 
 var startingWalk = false;
 var stoppedWalk = false;
+var finishingDrift = false;
 
 func _ready():
 	await get_tree().process_frame;
@@ -86,7 +87,6 @@ func _ready():
 	
 	defaultPowerup();
 	
-	await get_tree().create_timer(0.5).timeout;
 	canMove = true;
 
 func defaultPowerup():
@@ -114,8 +114,8 @@ func _physics_process(delta):
 		runAnimationSpeedController();
 		checkSprintInput();
 		jumpAnimationsController();
-		driftAnimationController();
 		mainMovementController();
+		driftAnimationController();
 		readyToFlyController(delta);
 		jumpAndFrictionController();
 		sneakController();
@@ -420,6 +420,14 @@ func _on_mario_animation_finished() -> void:
 		current_sprite.position.y = 0;
 		current_sprite.play(currentPowerup+"_idle");
 		current_sprite.frame = 80;
+		
+	if (current_sprite.animation == currentPowerup+"_drift_left_right" ||
+	current_sprite.animation == currentPowerup+"_drift_right_left"):
+		finishingDrift = false;
+		if (current_sprite.flip_h):
+			velocity.x = -max_run_speed*0.65;
+		else:
+			velocity.x = max_run_speed*0.65;
 
 func checkHeadHitRaycasts():
 	if (rcd1.is_colliding()): upAreaCollide(rcd1);
@@ -551,6 +559,9 @@ func jumpAnimationsController():
 			koyoteTime = true;
 			$KoyoteTimer.start();
 			falling = true;
+		finishingDrift = false;
+		startingWalk = false;
+		stoppedWalk = false;
 	elif (is_on_floor()):
 		if (jumping && abs(round(velocity.x)) < 400):
 			current_sprite.play(currentPowerup+"_arrive");
@@ -566,7 +577,10 @@ func jumpAnimationsController():
 
 func driftAnimationController():
 	if (drifting && is_on_floor()):
-		current_sprite.play(currentPowerup+"_drift");
+		if (current_sprite.flip_h):
+			current_sprite.play(currentPowerup+"_drift_right");
+		else:
+			current_sprite.play(currentPowerup+"_drift_left");
 		if (!$SoundDrift.playing):
 			$SoundDrift.play();
 	else:
@@ -584,22 +598,26 @@ func mainMovementController():
 				current_sprite.flip_h = false;
 				drifting = false;
 		
-			if (velocity.x < 0 && abs(velocity.x) > max_run_speed*0.8 && !carrying):
+			if (velocity.x < 0 && abs(velocity.x) >= max_run_speed*0.9 && !carrying):
 				drifting = true;
 			
 			if (velocity.x > 0 && drifting):
 				drifting = false;
+				current_sprite.play(currentPowerup+"_drift_left_right");
+				finishingDrift = true;
 			
 			if (!startingWalk && current_sprite.animation == currentPowerup+"_idle"):
 				startingWalk = true;
 				$StartWalkTimer.start();
 			
-			if (startingWalk):
+			if (finishingDrift):
+				pass
+			elif (startingWalk):
 				current_sprite.play(currentPowerup+"_idle_walk");
 			elif (carrying):
 				current_sprite.play(currentPowerup+"_carry_item_walk");
 			elif (!drifting):
-				if (abs(velocity.x) >= max_run_speed*0.8):
+				if (abs(velocity.x) >= max_run_speed*0.65):
 					current_sprite.play(currentPowerup+"_run");
 				else:
 					current_sprite.play(currentPowerup+"_walk");
@@ -628,11 +646,13 @@ func mainMovementController():
 				current_sprite.flip_h = true;
 				drifting = false;
 			
-			if (velocity.x > 0 && abs(velocity.x) > max_run_speed*0.8 && !carrying):
+			if (velocity.x > 0 && abs(velocity.x) >= max_run_speed*0.9 && !carrying):
 				drifting = true;
 				
 			if (velocity.x < 0 && drifting):
 				drifting = false;
+				finishingDrift = true;
+				current_sprite.play(currentPowerup+"_drift_right_left");
 				
 			var chck1 = velocity.x > 0 && !current_sprite.flip_h
 			var chck2 = velocity.x < 0 && current_sprite.flip_h;
@@ -646,12 +666,14 @@ func mainMovementController():
 				startingWalk = true;
 				$StartWalkTimer.start();
 			
-			if (startingWalk):
+			if (finishingDrift):
+				pass
+			elif (startingWalk):
 				current_sprite.play(currentPowerup+"_idle_walk");
 			elif (carrying):
 				current_sprite.play(currentPowerup+"_carry_item_walk");
 			elif (!drifting):
-				if (abs(velocity.x) >= max_run_speed*0.8):
+				if (abs(velocity.x) >= max_run_speed*0.65):
 					current_sprite.play(currentPowerup+"_run");
 				else:
 					current_sprite.play(currentPowerup+"_walk");
@@ -691,6 +713,8 @@ func mainMovementController():
 			
 			if (abs(velocity.x) <= max_walk_speed*0.4):
 				drifting = false;
+				finishingDrift = false;
+				startingWalk = false;
 		if (inpchckr && !course_clear):
 			if (current_sprite.flip_h):
 				current_sprite.flip_h = false;

@@ -1,10 +1,11 @@
-[gd_scene load_steps=204 format=4 uid="uid://glteyvs4rjs6"]
+[gd_scene load_steps=206 format=4 uid="uid://glteyvs4rjs6"]
 
 [ext_resource type="Texture2D" uid="uid://odaywx01maor" path="res://Sprites/Guides/start_menu_guide.png" id="1_grs5x"]
 [ext_resource type="Texture2D" uid="uid://cgt2n7edjmbpg" path="res://Sprites/UI/StartMenu/lplusr.png" id="1_ppynu"]
 [ext_resource type="Script" path="res://Scripts/UI/StartMenu/start_menu.gd" id="1_ycm04"]
 [ext_resource type="Texture2D" uid="uid://bmfbv3n7o4am0" path="res://Sprites/UI/StartMenu/logo.png" id="2_d2it3"]
 [ext_resource type="Texture2D" uid="uid://kq62wxbwps3f" path="res://Sprites/Gameplay/Backgrounds/Acorn Plains/bg_2.jpg" id="2_kj866"]
+[ext_resource type="PackedScene" uid="uid://dkcog3y5n3k2q" path="res://Scenes/Levels/acorn_plains_1.tscn" id="2_na0gw"]
 [ext_resource type="FontFile" uid="uid://58ndbqm0rupc" path="res://Fonts/New Super Mario Font U.ttf" id="2_vntcj"]
 [ext_resource type="FontFile" uid="uid://dln3ounc3pq8p" path="res://Fonts/couture-bld.otf" id="4_a1ud8"]
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="4_x8hp7"]
@@ -3389,10 +3390,136 @@ tracks/10/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_ty3ay"]
+resource_name = "out"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PressContainer/Press:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Author&Date:visible")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LogoContainer/Logo:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.46667, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.125, 0.125), Vector2(0.125, 0.125)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LogoContainer/Logo:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.46667, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(432, 298), Vector2(432, 298)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LogoContainer/Logo:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.46667, 3.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Author&Date:modulate")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.53333, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PressContainer/Press:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0999999, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-230, 91), Vector2(-302, 79), Vector2(-2, 137), Vector2(-230, 91)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PressContainer/Press:scale")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0999999, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(0.25, 0.25), Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_svyod"]
 _data = {
 "RESET": SubResource("Animation_vev4y"),
 "idle": SubResource("Animation_1n11v"),
+"out": SubResource("Animation_ty3ay"),
 "start": SubResource("Animation_a2w8k")
 }
 
@@ -3404,6 +3531,7 @@ shader_parameter/screen_height = 1080.0
 
 [node name="StartMenu" type="CanvasLayer"]
 script = ExtResource("1_ycm04")
+acornPlains1_1 = ExtResource("2_na0gw")
 
 [node name="ParallaxBackground" type="Parallax2D" parent="."]
 
@@ -3493,10 +3621,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 412.0
-offset_top = 278.0
-offset_right = 1452.0
-offset_bottom = 828.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1020.0
+offset_bottom = 530.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.125, 0.125)
