@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const acceleration = 10;
-const max_walk_speed = 300;
-const max_run_speed = 550;
-const jump_h  = -1300;
-const gravity = 40;
+const acceleration = 15;
+const max_walk_speed = 375;
+const max_run_speed = 750;
+const jump_h  = -1350;
+const gravity = 60;
 const max_fall = jump_h*-1;
 
 var running = false;
@@ -86,7 +86,7 @@ func _ready():
 	
 	defaultPowerup();
 	
-	await get_tree().create_timer(0.5);
+	await get_tree().create_timer(0.5).timeout;
 	canMove = true;
 
 func defaultPowerup():
@@ -179,7 +179,7 @@ func die():
 #	if (inst.position.y > 1545):
 #		inst.position.y = 1545;
 	
-	await get_tree().create_timer(0.8);
+	await get_tree().create_timer(0.8).timeout;
 	
 	current_sprite.play("small_dead");
 	$DeadTimer.start();
@@ -221,7 +221,7 @@ func upAreaCollide(rc):
 		if (singlegridcheck && currentPowerup == "small"):
 			if (!is_on_floor()):
 				canhit = true;
-				velocity.y = max_fall/4;
+				velocity.y = float(max_fall)/4;
 		else:
 			if (velocity.y <= 0 && !is_on_floor()):
 				canhit = true;
@@ -279,6 +279,8 @@ func hit():
 			die();
 
 func powerup(pw, changingpowerup = false):
+	if (changingpowerup):
+		pass
 	if (currentPowerup != pw && !died):
 		match (pw):
 			"Star":
@@ -454,7 +456,7 @@ func canMoveCheck():
 	return (!died && !in_flag_pole && !changingPowerup);
 
 func fireflowerAttackController():
-	if (Input.is_action_just_pressed("y") || Input.is_action_just_pressed("x")):
+	if (Input.is_action_just_pressed("x")):
 		if (currentPowerup == "fireflower" && !attacking && canAttack && !sneaking):
 			if (attacks < 3):
 				attacks += 1;
@@ -509,7 +511,7 @@ func runAnimationSpeedController():
 		max_speed = max_walk_speed;
 
 func checkSprintInput():
-	if (Input.is_action_pressed("y") || Input.is_action_pressed("x")):
+	if (Input.is_action_pressed("x")):
 		running = true;
 	else:
 		running = false;
@@ -534,9 +536,14 @@ func jumpAnimationsController():
 							pass
 			else:
 				if (current_sprite.animation != currentPowerup+"_fall"):
-					if  (falling || jumping):
+					if (falling && jumping):
 						if (!sneaking):
 							current_sprite.play(currentPowerup+"_fall");
+						else:
+							pass
+					else:
+						if (!sneaking):
+							current_sprite.play(currentPowerup+"_just_fall");
 						else:
 							pass
 			
@@ -545,7 +552,7 @@ func jumpAnimationsController():
 			$KoyoteTimer.start();
 			falling = true;
 	elif (is_on_floor()):
-		if (jumping && abs(round(velocity.x)) < 150):
+		if (jumping && abs(round(velocity.x)) < 400):
 			current_sprite.play(currentPowerup+"_arrive");
 			arriving = true;
 			current_sprite.position.y = 5;
@@ -567,8 +574,8 @@ func driftAnimationController():
 			$SoundDrift.stop();
 
 func mainMovementController():
-	var inpchckr = Input.is_action_pressed("right") || Input.is_action_pressed("dright");
-	var inpchckl = Input.is_action_pressed("left") || Input.is_action_pressed("dleft");
+	var inpchckr = Input.is_action_pressed("right");
+	var inpchckl = Input.is_action_pressed("left");
 	var sneakchck = !sneaking || !is_on_floor();
 	if (inpchckr && sneakchck && !course_clear):
 		var acc = acceleration * 2.5;
@@ -592,7 +599,7 @@ func mainMovementController():
 			elif (carrying):
 				current_sprite.play(currentPowerup+"_carry_item_walk");
 			elif (!drifting):
-				if (currentRTFLevel == 7):
+				if (abs(velocity.x) >= max_run_speed*0.8):
 					current_sprite.play(currentPowerup+"_run");
 				else:
 					current_sprite.play(currentPowerup+"_walk");
@@ -607,7 +614,11 @@ func mainMovementController():
 		else:
 			if (current_sprite.flip_h):
 				current_sprite.flip_h = false;
-		velocity.x = min(velocity.x + acc, max_speed);
+		if (velocity.x < max_speed):
+			velocity.x += acc;
+		else:
+			velocity.x -= acc;
+		#velocity.x = min(velocity.x + acc, max_speed);
 		stoppedWalk = false;
 		arriving = false;
 	elif (inpchckl && sneakchck && !course_clear):
@@ -640,14 +651,18 @@ func mainMovementController():
 			elif (carrying):
 				current_sprite.play(currentPowerup+"_carry_item_walk");
 			elif (!drifting):
-				if (currentRTFLevel == 7):
+				if (abs(velocity.x) >= max_run_speed*0.8):
 					current_sprite.play(currentPowerup+"_run");
 				else:
 					current_sprite.play(currentPowerup+"_walk");
 		else:
 			if (!current_sprite.flip_h):
 				current_sprite.flip_h = true;
-		velocity.x = max(velocity.x - acc, -max_speed);
+		if (velocity.x > -max_speed):
+			velocity.x -= acc;
+		else:
+			velocity.x += acc;
+		#velocity.x = max(velocity.x - acc, -max_speed);
 		stoppedWalk = false;
 		arriving = false;
 	else:
@@ -686,7 +701,7 @@ func mainMovementController():
 func jumpAndFrictionController():
 	if (is_on_floor() || koyoteTime):
 		if (!course_clear):
-			if (Input.is_action_just_pressed("a") || Input.is_action_just_pressed("b")):
+			if (Input.is_action_just_pressed("a")):
 				#High Jump Controller
 				if (abs(velocity.x) >= max_run_speed):
 					velocity.y = jump_h*1.1;
@@ -702,54 +717,55 @@ func jumpAndFrictionController():
 				
 				detectSingleGrid();
 		if (friction):
-			velocity.x = lerp(velocity.x, 0.0, 0.0625);
+			velocity.x = lerp(velocity.x, 0.0, 0.1);
 	else:
 		if (friction):
 			velocity.x = lerp(velocity.x, 0.0, 0.01);
 		
-	if (Input.is_action_just_released("a") || Input.is_action_just_released("b")):
+	if (Input.is_action_just_released("a")):
 		if (jumping && velocity.y < jump_h*0.35 && !is_on_floor() && !course_clear):
 			velocity.y = jump_h*0.35
 			if (!sneaking):
 				current_sprite.play(currentPowerup+"_jump");
 
 func readyToFlyController(delta):
-	if (is_on_floor() && abs(velocity.x) >= max_run_speed*0.8):
-		if ($RTFDecreaseTimer.is_stopped()):
-			$RTFDecreaseTimer.stop();
-		RTFCanDecrease = false;
-		
-		RTFDecrease = 0.0;
-		RTFIncrease += delta;
-		if (RTFIncrease >= 0.125):
-			RTFIncrease = 0.0;
-			if (currentRTFLevel < 7):
-				currentRTFLevel += 1;
-	elif (RTFCanDecrease && abs(velocity.x) < max_run_speed*0.8):
-		RTFIncrease = 0.0;
-		RTFDecrease += delta;
-		if (RTFDecrease >= 0.2):
-			RTFDecrease = 0.0;
-			if (currentRTFLevel > 0):
-				currentRTFLevel -= 1;
-	
-	if (abs(velocity.x) < max_run_speed*0.8):
-		if ($RTFDecreaseTimer.is_stopped() && !RTFCanDecrease):
-			$RTFDecreaseTimer.start();
-	
-	if (currentRTFLevel == 7):
-		if (!$SoundReadytofly.playing):
-			$SoundReadytofly.play();
-	else:
-		if ($SoundReadytofly.playing):
-			$SoundReadytofly.stop();
+	pass
+	#if (is_on_floor() && abs(velocity.x) >= max_run_speed*0.8):
+		#if ($RTFDecreaseTimer.is_stopped()):
+			#$RTFDecreaseTimer.stop();
+		#RTFCanDecrease = false;
+		#
+		#RTFDecrease = 0.0;
+		#RTFIncrease += delta;
+		#if (RTFIncrease >= 0.125):
+			#RTFIncrease = 0.0;
+			#if (currentRTFLevel < 7):
+				#currentRTFLevel += 1;
+	#elif (RTFCanDecrease && abs(velocity.x) < max_run_speed*0.8):
+		#RTFIncrease = 0.0;
+		#RTFDecrease += delta;
+		#if (RTFDecrease >= 0.2):
+			#RTFDecrease = 0.0;
+			#if (currentRTFLevel > 0):
+				#currentRTFLevel -= 1;
+	#
+	#if (abs(velocity.x) < max_run_speed*0.8):
+		#if ($RTFDecreaseTimer.is_stopped() && !RTFCanDecrease):
+			#$RTFDecreaseTimer.start();
+	#
+	#if (currentRTFLevel == 7):
+		#if (!$SoundReadytofly.playing):
+			#$SoundReadytofly.play();
+	#else:
+		#if ($SoundReadytofly.playing):
+			#$SoundReadytofly.stop();
 
 func sneakController():
-	if (Input.is_action_pressed("down") || Input.is_action_pressed("ddown")):
+	if (Input.is_action_pressed("down")):
 		if (is_on_floor() && !course_clear && !sneaking):
 			sneak();
 	
-	if (Input.is_action_just_released("down") || Input.is_action_just_released("ddown")):
+	if (Input.is_action_just_released("down")):
 		if (sneaking && !course_clear && !obligatorysneak):
 			releaseSneak();
 

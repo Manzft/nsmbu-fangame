@@ -1,9 +1,8 @@
-[gd_scene load_steps=263 format=3 uid="uid://dhyetjsw1hngl"]
+[gd_scene load_steps=295 format=3 uid="uid://dhyetjsw1hngl"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/character.gd" id="1_cqasu"]
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="2_0r622"]
 [ext_resource type="Texture2D" uid="uid://csq4uvjar84n1" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove1.png" id="2_ntyh2"]
-[ext_resource type="Texture2D" uid="uid://owdusnvw1ffk" path="res://Sprites/Gameplay/light2d.png" id="3_1i7hk"]
 [ext_resource type="Texture2D" uid="uid://dyl0m8yhx5ps" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove2.png" id="3_32k6w"]
 [ext_resource type="Texture2D" uid="uid://bb01v0nl2tcd1" path="res://Sprites/Gameplay/Mario/Small/jump/jump000.png" id="3_ng8ys"]
 [ext_resource type="Texture2D" uid="uid://dy3yt1iqiq325" path="res://Sprites/Gameplay/Mario/Small/jump/jump001.png" id="4_inshb"]
@@ -55,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://s70hfwrm1uh3" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove27.png" id="28_gbc7u"]
 [ext_resource type="Texture2D" uid="uid://c8maujtbn2og4" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove28.png" id="29_ebx4r"]
 [ext_resource type="Texture2D" uid="uid://cfbn66n2cjeu2" path="res://Sprites/Gameplay/Mario/Small/fall/Fall001.png" id="30_7b1n4"]
+[ext_resource type="Texture2D" uid="uid://bhsi0lhn2q4ut" path="res://Sprites/Gameplay/Mario/Small/drift_left.png" id="30_506vh"]
 [ext_resource type="Texture2D" uid="uid://ct0k4jggg72ye" path="res://Sprites/Gameplay/Mario/Small/fall/Fall002.png" id="31_ydkig"]
 [ext_resource type="Texture2D" uid="uid://cl4pnoqficokc" path="res://Sprites/Gameplay/Mario/Small/fall/Fall003.png" id="32_stwq7"]
 [ext_resource type="Texture2D" uid="uid://btga6b1urhpfs" path="res://Sprites/Gameplay/Mario/Small/fall/Fall004.png" id="33_nkkaa"]
@@ -62,6 +62,38 @@
 [ext_resource type="Texture2D" uid="uid://d0klanu16ssk7" path="res://Sprites/Gameplay/Mario/Small/fall/Fall006.png" id="35_juedl"]
 [ext_resource type="Texture2D" uid="uid://kg7u68o3k0hp" path="res://Sprites/Gameplay/Mario/Small/idle-walk.png" id="37_iekpb"]
 [ext_resource type="Texture2D" uid="uid://5t3b5cliysvw" path="res://Sprites/Gameplay/Mario/Small/walk.png" id="61_ib1sj"]
+[ext_resource type="Texture2D" uid="uid://ct3ilxw8nrgae" path="res://Sprites/Gameplay/Mario/Small/run/f_0001.png" id="62_75imh"]
+[ext_resource type="Texture2D" uid="uid://du1su1avltq1m" path="res://Sprites/Gameplay/light2dgradient.png" id="62_iwyqy"]
+[ext_resource type="Texture2D" uid="uid://bd5cgndxdtomx" path="res://Sprites/Gameplay/Mario/Small/run/f_0002.png" id="63_7kjtx"]
+[ext_resource type="Texture2D" uid="uid://dovusv43fvx2b" path="res://Sprites/Gameplay/Mario/Small/run/f_0003.png" id="64_kupxk"]
+[ext_resource type="Texture2D" uid="uid://cqd32bii7swu8" path="res://Sprites/Gameplay/Mario/Small/run/f_0004.png" id="65_ydijb"]
+[ext_resource type="Texture2D" uid="uid://dh2cjin28x0r2" path="res://Sprites/Gameplay/Mario/Small/run/f_0005.png" id="66_j4e61"]
+[ext_resource type="Texture2D" uid="uid://b5wgmlotdle6e" path="res://Sprites/Gameplay/Mario/Small/run/f_0006.png" id="67_27r7p"]
+[ext_resource type="Texture2D" uid="uid://bk7p37q6wtb4a" path="res://Sprites/Gameplay/Mario/Small/run/f_0007.png" id="68_qj6sr"]
+[ext_resource type="Texture2D" uid="uid://dncal3da6oxxw" path="res://Sprites/Gameplay/Mario/Small/run/f_0008.png" id="69_ywpkk"]
+[ext_resource type="Texture2D" uid="uid://bj3hoxob6hkj7" path="res://Sprites/Gameplay/Mario/Small/run/f_0009.png" id="70_7g6t8"]
+[ext_resource type="Texture2D" uid="uid://cv8lo1ii3804c" path="res://Sprites/Gameplay/Mario/Small/run/f_0010.png" id="71_x0f0f"]
+[ext_resource type="Texture2D" uid="uid://fikrqyf5esqh" path="res://Sprites/Gameplay/Mario/Small/run/f_0011.png" id="72_0neae"]
+[ext_resource type="Texture2D" uid="uid://d00866txdbhip" path="res://Sprites/Gameplay/Mario/Small/run/f_0012.png" id="73_ld3xf"]
+[ext_resource type="Texture2D" uid="uid://bl0ag8imlttpi" path="res://Sprites/Gameplay/Mario/Small/run/f_0013.png" id="74_ge4y4"]
+[ext_resource type="Texture2D" uid="uid://ccsjw8tvsgxat" path="res://Sprites/Gameplay/Mario/Small/run/f_0014.png" id="75_mc17d"]
+[ext_resource type="Texture2D" uid="uid://bayw1mrd4ultr" path="res://Sprites/Gameplay/Mario/Small/run/f_0015.png" id="76_dkvy5"]
+[ext_resource type="Texture2D" uid="uid://ml72h2v3skm7" path="res://Sprites/Gameplay/Mario/Small/run/f_0016.png" id="77_qluxn"]
+[ext_resource type="Texture2D" uid="uid://bqj3ko03tqewp" path="res://Sprites/Gameplay/Mario/Small/run/f_0017.png" id="78_e4p37"]
+[ext_resource type="Texture2D" uid="uid://3p8b2c1tfy88" path="res://Sprites/Gameplay/Mario/Small/run/f_0018.png" id="79_hd8jf"]
+[ext_resource type="Texture2D" uid="uid://ckiyv5y5pvqb3" path="res://Sprites/Gameplay/Mario/Small/run/f_0019.png" id="80_6ywab"]
+[ext_resource type="Texture2D" uid="uid://c7jkdfnwn14ec" path="res://Sprites/Gameplay/Mario/Small/run/f_0020.png" id="81_b6026"]
+[ext_resource type="Texture2D" uid="uid://dcu0oqkjddyqp" path="res://Sprites/Gameplay/Mario/Small/run/f_0021.png" id="82_u1y2v"]
+[ext_resource type="Texture2D" uid="uid://dcyryxwndm0fu" path="res://Sprites/Gameplay/Mario/Small/run/f_0022.png" id="83_d7ksc"]
+[ext_resource type="Texture2D" uid="uid://ckm0f4w6myrmg" path="res://Sprites/Gameplay/Mario/Small/run/f_0023.png" id="84_ki3w5"]
+[ext_resource type="Texture2D" uid="uid://k4to012ox5eu" path="res://Sprites/Gameplay/Mario/Small/run/f_0024.png" id="85_sbdd6"]
+[ext_resource type="Texture2D" uid="uid://ddd34xrlcv5bf" path="res://Sprites/Gameplay/Mario/Small/run/f_0025.png" id="86_1qfh1"]
+[ext_resource type="Texture2D" uid="uid://c2uaopreyofmn" path="res://Sprites/Gameplay/Mario/Small/run/f_0026.png" id="87_2uaxa"]
+[ext_resource type="Texture2D" uid="uid://bab0t5031c8tj" path="res://Sprites/Gameplay/Mario/Small/run/f_0027.png" id="88_vnrog"]
+[ext_resource type="Texture2D" uid="uid://vmybxcwewpxm" path="res://Sprites/Gameplay/Mario/Small/run/f_0028.png" id="89_2ar3k"]
+[ext_resource type="Texture2D" uid="uid://dghy0b3unp3mi" path="res://Sprites/Gameplay/Mario/Small/run/f_0029.png" id="90_ser05"]
+[ext_resource type="Texture2D" uid="uid://efroj8mmmec2" path="res://Sprites/Gameplay/Mario/Small/run/f_0030.png" id="91_wry4t"]
+[ext_resource type="Texture2D" uid="uid://bdj4nh56fflq2" path="res://Sprites/Gameplay/Mario/Small/run/f_0031.png" id="92_kmyyr"]
 
 [sub_resource type="RectangleShape2D" id="26"]
 size = Vector2(40, 93)
@@ -640,6 +672,10 @@ region = Rect2(475, 0, 95, 115)
 atlas = ExtResource("37_iekpb")
 region = Rect2(570, 0, 95, 115)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ot4n"]
+atlas = ExtResource("37_iekpb")
+region = Rect2(665, 0, 95, 115)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_45sbi"]
 atlas = ExtResource("37_iekpb")
 region = Rect2(760, 0, 95, 115)
@@ -667,10 +703,6 @@ region = Rect2(1235, 0, 95, 115)
 [sub_resource type="AtlasTexture" id="AtlasTexture_apvlh"]
 atlas = ExtResource("37_iekpb")
 region = Rect2(0, 0, 95, 115)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ot4n"]
-atlas = ExtResource("37_iekpb")
-region = Rect2(665, 0, 95, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qa8xj"]
 atlas = ExtResource("61_ib1sj")
@@ -933,6 +965,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("30_506vh")
+}],
+"loop": true,
+"name": &"small_drift",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("30_7b1n4")
 }, {
 "duration": 1.0,
@@ -952,7 +992,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"small_fall",
-"speed": 30.0
+"speed": 45.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1387,6 +1427,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_q277q")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6ot4n")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_45sbi")
 }, {
 "duration": 1.0,
@@ -1406,9 +1449,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_apvlh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ot4n")
 }],
 "loop": false,
 "name": &"small_idle_walk",
@@ -1486,6 +1526,112 @@ animations = [{
 }],
 "loop": false,
 "name": &"small_jump",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_juedl")
+}],
+"loop": true,
+"name": &"small_just_fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_75imh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_7kjtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_kupxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_ydijb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_j4e61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_27r7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_qj6sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_ywpkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_7g6t8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_x0f0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_0neae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_ld3xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_ge4y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_mc17d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_dkvy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_qluxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_e4p37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_hd8jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_6ywab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_b6026")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_u1y2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_d7ksc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_ki3w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_sbdd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_1qfh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_2uaxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_vnrog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_2ar3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_ser05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_wry4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_kmyyr")
+}],
+"loop": true,
+"name": &"small_run",
 "speed": 60.0
 }, {
 "frames": [{
@@ -1753,7 +1899,8 @@ collide_with_areas = true
 [node name="Mario" type="AnimatedSprite2D" parent="."]
 light_mask = 3
 sprite_frames = SubResource("SpriteFrames_yea5x")
-animation = &"small_idle"
+animation = &"small_just_fall"
+autoplay = "small_idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1761,7 +1908,7 @@ libraries = {
 }
 
 [node name="StartWalkTimer" type="Timer" parent="."]
-wait_time = 0.217
+wait_time = 0.21
 one_shot = true
 
 [node name="KoyoteTimer" type="Timer" parent="."]
@@ -1850,11 +1997,14 @@ volume_db = 5.0
 [node name="SoundOnOffSwitch" type="AudioStreamPlayer" parent="."]
 
 [node name="Light2D" type="PointLight2D" parent="."]
-enabled = false
-energy = 2.0
-blend_mode = 2
+visible = false
+position = Vector2(2, 21)
+scale = Vector2(1, 0.66)
+energy = 0.75
+blend_mode = 1
 range_item_cull_mask = 2
-texture = ExtResource("3_1i7hk")
+texture = ExtResource("62_iwyqy")
+texture_scale = 0.2
 
 [connection signal="animation_finished" from="Mario" to="." method="_on_mario_animation_finished"]
 [connection signal="timeout" from="StartWalkTimer" to="." method="_on_start_walk_timer_timeout"]
