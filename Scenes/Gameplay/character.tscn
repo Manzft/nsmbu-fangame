@@ -2006,6 +2006,10 @@ libraries = {
 "": SubResource("AnimationLibrary_6wpli")
 }
 
+[node name="DriftParticlesTimer" type="Timer" parent="."]
+wait_time = 0.063
+one_shot = true
+
 [node name="StartWalkTimer" type="Timer" parent="."]
 wait_time = 0.21
 one_shot = true
@@ -2106,6 +2110,7 @@ texture = ExtResource("62_iwyqy")
 texture_scale = 0.2
 
 [connection signal="animation_finished" from="Mario" to="." method="_on_mario_animation_finished"]
+[connection signal="timeout" from="DriftParticlesTimer" to="." method="_on_drift_particles_timer_timeout"]
 [connection signal="timeout" from="StartWalkTimer" to="." method="_on_start_walk_timer_timeout"]
 [connection signal="timeout" from="KoyoteTimer" to="." method="_on_KoyoteTimer_timeout"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]

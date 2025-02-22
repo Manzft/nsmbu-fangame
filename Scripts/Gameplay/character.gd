@@ -563,11 +563,19 @@ func jumpAnimationsController():
 		startingWalk = false;
 		stoppedWalk = false;
 	elif (is_on_floor()):
-		if (jumping && abs(round(velocity.x)) < 400):
+		if (jumping && abs(round(velocity.x)) < 300):
 			current_sprite.play(currentPowerup+"_arrive");
 			arriving = true;
 			current_sprite.position.y = 5;
 			velocity.x = 0;
+		
+		if (jumping || falling):
+			#Smoke Particle
+			var inst = load("res://Scenes/Particles/smoke.tscn").instantiate()
+			get_parent().add_child(inst);
+			inst.emitting = true;
+			inst.position = position;
+			inst.position.y += 50;
 		
 		jumping = false;
 		koyoteTime = false;
@@ -583,6 +591,8 @@ func driftAnimationController():
 			current_sprite.play(currentPowerup+"_drift_left");
 		if (!$SoundDrift.playing):
 			$SoundDrift.play();
+		if ($DriftParticlesTimer.is_stopped()):
+			$DriftParticlesTimer.start();
 	else:
 		if ($SoundDrift.playing):
 			$SoundDrift.stop();
@@ -820,3 +830,11 @@ func setKickingAnimation():
 
 func _on_start_walk_timer_timeout() -> void:
 	startingWalk = false;
+
+func _on_drift_particles_timer_timeout() -> void:
+	#Smoke Particle
+	var inst = load("res://Scenes/Particles/drift_smoke.tscn").instantiate()
+	get_parent().add_child(inst);
+	inst.emitting = true;
+	inst.position = position;
+	inst.position.y += 45;
