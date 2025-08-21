@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cpcmqs7arfgav"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Loading/loading.gd" id="1_7tubw"]
-[ext_resource type="Shader" path="res://Shaders/tiling.gdshader" id="1_iem2l"]
+[ext_resource type="Script" uid="uid://bc5ni5l23348p" path="res://Scripts/UI/Loading/loading.gd" id="1_7tubw"]
+[ext_resource type="Shader" uid="uid://ckwwsrh3o1y6a" path="res://Shaders/tiling.gdshader" id="1_iem2l"]
 [ext_resource type="Texture2D" uid="uid://cydq7nukbd5n1" path="res://Sprites/UI/LoadingScreen/bg.png" id="1_rhgb5"]
 [ext_resource type="PackedScene" uid="uid://glteyvs4rjs6" path="res://Scenes/UI/start_menu.tscn" id="2_pr3ss"]
 [ext_resource type="FontFile" uid="uid://58ndbqm0rupc" path="res://Fonts/New Super Mario Font U.ttf" id="3_f0ewk"]
@@ -75,8 +75,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fshh8"]
 _data = {
-"RESET": SubResource("Animation_rabk6"),
-"idle": SubResource("Animation_mi7k2")
+&"RESET": SubResource("Animation_rabk6"),
+&"idle": SubResource("Animation_mi7k2")
 }
 
 [sub_resource type="Animation" id="Animation_j4pg5"]
@@ -130,9 +130,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7qos"]
 _data = {
-"RESET": SubResource("Animation_j4pg5"),
-"in": SubResource("Animation_l1ejc"),
-"out": SubResource("Animation_pgtij")
+&"RESET": SubResource("Animation_j4pg5"),
+&"in": SubResource("Animation_l1ejc"),
+&"out": SubResource("Animation_pgtij")
 }
 
 [node name="Loading" type="CanvasLayer"]
@@ -199,7 +199,7 @@ label_settings = SubResource("LabelSettings_0u8vt")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingTextContainer"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_fshh8")
+&"": SubResource("AnimationLibrary_fshh8")
 }
 
 [node name="DestroyTimer" type="Timer" parent="."]
@@ -217,7 +217,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_a7qos")
+&"": SubResource("AnimationLibrary_a7qos")
 }
 
 [connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

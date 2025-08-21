@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://odaywx01maor" path="res://Sprites/Guides/start_menu_guide.png" id="1_grs5x"]
 [ext_resource type="Texture2D" uid="uid://cgt2n7edjmbpg" path="res://Sprites/UI/StartMenu/lplusr.png" id="1_ppynu"]
-[ext_resource type="Script" path="res://Scripts/UI/StartMenu/start_menu.gd" id="1_ycm04"]
+[ext_resource type="Script" uid="uid://c5ldqcpe23fi1" path="res://Scripts/UI/StartMenu/start_menu.gd" id="1_ycm04"]
 [ext_resource type="Texture2D" uid="uid://bmfbv3n7o4am0" path="res://Sprites/UI/StartMenu/logo.png" id="2_d2it3"]
 [ext_resource type="Texture2D" uid="uid://kq62wxbwps3f" path="res://Sprites/Gameplay/Backgrounds/Acorn Plains/bg_2.jpg" id="2_kj866"]
 [ext_resource type="PackedScene" uid="uid://dkcog3y5n3k2q" path="res://Scenes/Levels/acorn_plains_1.tscn" id="2_na0gw"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="4_x8hp7"]
 [ext_resource type="AudioStream" uid="uid://c72f1tua7tlsy" path="res://Music/UI/StartMenu/title_screen.mp3" id="6_p2fi4"]
 [ext_resource type="Texture2D" uid="uid://c6uhfwy5jp1l2" path="res://Sprites/Gameplay/Tilesets/Tileset1/Pa1_1-1_1.png" id="8_mum5i"]
-[ext_resource type="Shader" path="res://Shaders/circle.gdshader" id="13_ellju"]
+[ext_resource type="Shader" uid="uid://eryyubgbjqkq" path="res://Shaders/circle.gdshader" id="13_ellju"]
 [ext_resource type="Texture2D" uid="uid://kg7u68o3k0hp" path="res://Sprites/Gameplay/Mario/Small/idle-walk.png" id="135_v7bvi"]
 [ext_resource type="Texture2D" uid="uid://5t3b5cliysvw" path="res://Sprites/Gameplay/Mario/Small/walk.png" id="136_r7k5c"]
 
@@ -3517,10 +3517,10 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_svyod"]
 _data = {
-"RESET": SubResource("Animation_vev4y"),
-"idle": SubResource("Animation_1n11v"),
-"out": SubResource("Animation_ty3ay"),
-"start": SubResource("Animation_a2w8k")
+&"RESET": SubResource("Animation_vev4y"),
+&"idle": SubResource("Animation_1n11v"),
+&"out": SubResource("Animation_ty3ay"),
+&"start": SubResource("Animation_a2w8k")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_25gtb"]

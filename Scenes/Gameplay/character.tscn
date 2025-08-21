@@ -1,6 +1,6 @@
 [gd_scene load_steps=316 format=3 uid="uid://dhyetjsw1hngl"]
 
-[ext_resource type="Script" path="res://Scripts/Gameplay/character.gd" id="1_cqasu"]
+[ext_resource type="Script" uid="uid://dmtmfuy0jdd7l" path="res://Scripts/Gameplay/character.gd" id="1_cqasu"]
 [ext_resource type="Texture2D" uid="uid://dfmut7gcuyw03" path="res://Sprites/Gameplay/Mario/Small/idle.png" id="2_0r622"]
 [ext_resource type="Texture2D" uid="uid://csq4uvjar84n1" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove1.png" id="2_ntyh2"]
 [ext_resource type="Texture2D" uid="uid://dyl0m8yhx5ps" path="res://Sprites/Gameplay/Mario/Small/arrive/arrove2.png" id="3_32k6w"]
@@ -1933,9 +1933,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6wpli"]
 _data = {
-"RESET": SubResource("19"),
-"invincible": SubResource("27"),
-"star": SubResource("20")
+&"RESET": SubResource("19"),
+&"invincible": SubResource("27"),
+&"star": SubResource("20")
 }
 
 [node name="Character" type="CharacterBody2D" groups=["Character"]]
